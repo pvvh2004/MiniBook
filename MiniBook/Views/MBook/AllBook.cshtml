@@ -1,0 +1,33 @@
+﻿@using MiniBook.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<SACH>
+@{
+    ViewBag.Title = "AllBook";
+    Layout = "~/Views/Shared/_LayoutAllBook.cshtml";
+}
+<div class="row ">
+    @foreach (var book in Model)
+    {
+        <div style="padding:5px" class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-4 col-12">
+            <div class="card container pt-1">
+                <a href="@Url.Action("Details", new { id = book.IDSach })">
+                    <img class="card-img-top " src="~/Images/@book.AnhMinhHoa" width="150" height="250">
+                </a>
+                <div class="card-body" style="text-align: center">
+                    <div style="height:70px"><h6 class="card-title text">@book.TenSach</h6></div>
+                    <p class="card-text">@string.Format("{0:#,##0}", book.GiaBan) vnd</p>
+                    <a class="btn btn-outline-warning" href="@Url.Action("ThemSanPhamVaoGio","GioHang", new {IDSach=book.IDSach})">Thêm vào giỏ hàng</a>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="MenuTrang" style="padding-top:40px; display: flex; justify-content: center; align-items: center; " >
+        @Html.PagedListPager(Model, page => Url.Action("AllBook", new { page }))
+    </div>
+    <style>
+        .MenuTrang li {
+            display: inline;
+        }
+    </style>
+
+</div>

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MiniBook.Models.DONHANG>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2 style="text-align:center">Danh sách đơn hàng</h2>
+<hr />
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Ngày đặt
+        </th>
+        <th>
+            Tổng tiền
+        </th>
+        <th>
+            Số điện thoại nhận
+        </th>
+        <th>
+            Trạng thái
+        </th>
+        <th>
+            Tên khách hàng
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDDonHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TongTien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDTNhan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrangThai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KHACHHANG.Ten)
+            </td>
+            <td>
+                @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.IDDonHang }, new { @class = "btn btn-outline-warning" }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.IDDonHang }, new { @class = "btn btn-outline-info" })
+            </td>
+        </tr>
+    }
+
+</table>

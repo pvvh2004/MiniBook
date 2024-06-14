@@ -1,0 +1,106 @@
+﻿@model MiniBook.Models.SACH
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">Xóa sách</h2>
+
+<h3>Bạn có chắc muốn xóa cuốn sách này?</h3>
+<div>
+
+    <hr />
+    <div class="r">
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Tên sách:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.TenSach)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Giá bán:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.GiaBan)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Số lượng kho:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.SoLuongKho)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Mô tả:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.MoTa)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Anh minh họa:
+            </div>
+            <div class="col-md-9">
+                <img style="width:150px; height:150px" src="~/Images/@Model.AnhMinhHoa" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Ngày phát hành:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.NgayPhatHanh)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Số lượt xem:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.SLXem)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Số lượng bán:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.SLBan)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Nhà xuất bản:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.NXB.TenNXB)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Tên thể loại:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.THELOAI.TenTheLoai)
+            </div>
+        </div>
+
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color"style="text-align:center; padding-top: 20px">
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-outline-secondary" })
+        </div>
+    }
+</div>

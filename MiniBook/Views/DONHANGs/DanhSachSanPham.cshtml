@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MiniBook.Models.CHITIETDONHANG>
+
+@{
+    ViewBag.Title = "DanhSachSanPham";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<h2>Danh sách sản phẩm </h2>
+<table class="table">
+    <tr>
+        <th>
+            Tên sách
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Đơn giá
+        </th>
+        <th>
+            Thành tiền
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SACH.TenSach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonGia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThanhTien)
+            </td>
+        </tr>
+    }
+
+</table>
+<p style="text-align:center; padding-top: 20px">
+    @Html.ActionLink("Trở về", "LichSuDonHang", "DONHANGs", new { id = Session["IDCus"] }, new { @class = "btn btn-outline-secondary" })
+</p>

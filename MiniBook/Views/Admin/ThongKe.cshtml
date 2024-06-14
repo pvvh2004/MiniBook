@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "ThongKe";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/ThongKe.css" rel="stylesheet" />
+</head>
+<h2 style="text-align:center">Thống kê</h2>
+<hr />
+<body class="bg-default">
+    <div class="main-content">
+        <div class="container-fluid" style="padding-top: 40px">
+            <div class="row">
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                        <div class="card-body">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Số đơn hàng trong tháng</h5>
+                                <span class="h2 font-weight-bold mb-0">@ViewBag.slDonHangTrongThang</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Số đơn trạng thái chờ</h5>
+                                <span class="h2 font-weight-bold mb-0">@ViewBag.slDonCho</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                        <div class="card-body">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Số đơn đã giao</h5>
+                                <span class="h2 font-weight-bold mb-0">@ViewBag.slDonHangThanhCongTrongThang</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Số đơn hủy</h5>
+                                <span class="h2 font-weight-bold mb-0">@ViewBag.slDonHangHuyTrongThang</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding-top:30px">
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Số lượng khách hàng</h5>
+                                <span class="h2 font-weight-bold mb-0">@ViewBag.slKH</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                        <div class="card-body">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Số lượng sách bán ra</h5>
+                                <span class="h2 font-weight-bold mb-0">@ViewBag.slSachBanTrongThang</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Doanh thu hiện tại</h5>
+                                <span class="h2 font-weight-bold mb-0">@string.Format("{0:#,##0}", @ViewBag.doanhThuThang) vnđ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                        <div class="card-body">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Doanh thu dự tính đến hiện tại</h5>
+                                <span class="h2 font-weight-bold mb-0">@string.Format("{0:#,##0}", @ViewBag.doanhThuThangDuTinh) vnđ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

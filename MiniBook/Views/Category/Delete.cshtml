@@ -1,0 +1,32 @@
+﻿@model MiniBook.Models.THELOAI
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2 style="text-align:center">Xóa thể loại</h2>
+<h3>Bạn có chắc muốn xóa ?</h3>
+<hr/>
+<div>
+    <div class="dl-horizontal">
+
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Tên thể loại:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.TenTheLoai)
+            </div>
+        </div>
+
+    </div>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color" style="text-align:center; padding-top: 20px">
+    <input type="submit" value="Xóa" class="btn btn-danger" /> |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-outline-secondary" })
+</div>
+    }
+</div>

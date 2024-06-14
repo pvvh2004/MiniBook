@@ -1,0 +1,61 @@
+﻿@model MiniBook.Models.TACGIA
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">Xóa tác giả</h2>
+
+<h3>Bạn có chắc muốn xóa tác giả này?</h3>
+<div>
+    <hr />
+    <div class="dl-horizontal">
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Tên tác giả:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Ten)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Địa chỉ:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.DiaChi)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Mail:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Mail)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Giới thiệu:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.GioiThieu)
+            </div>
+        </div>
+
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color" style="text-align:center; padding-top: 20px">
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-outline-secondary" })
+        </div>
+    }
+</div>

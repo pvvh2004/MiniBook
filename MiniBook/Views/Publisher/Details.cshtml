@@ -1,0 +1,50 @@
+﻿@model MiniBook.Models.NXB
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">Chi tiết nhà xuất bản</h2>
+<hr />
+<div>
+
+    <div class="">
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Tên NXB:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.TenNXB)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 row-title">
+                SDT:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.SDT)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Mail:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Mail)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Địa chỉ:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.DiaChi)
+            </div>
+        </div>
+    </div>
+</div>
+<p style="text-align:center; padding-top: 20px">
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.IDNXB }, new { @class = "btn btn-outline-warning" }) |
+    @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-outline-secondary" })
+</p>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MiniBook.Models.SACH>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">Danh sách sách</h2>
+<hr/>
+<p>
+    @Html.ActionLink("Thêm mới", "Create",null, new { @class = "btn btn-outline-primary" })
+</p>
+<table class="table .table-striped">
+    <tr>
+        <th>
+            Tên sách
+        </th>
+        <th>
+            Giá bán
+        </th>
+        <th>
+            Số lượng kho
+        </th>
+        <th>
+            Ảnh minh họa
+        </th>
+        <th>
+            SL xem
+        </th>
+        <th>
+            SL bán 
+        </th>
+        <th>
+            Tên thể loại
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td class="col-2">
+            @Html.DisplayFor(modelItem => item.TenSach)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaBan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuongKho)
+        </td>
+        <td>
+            <img style="width:150px; height:150px" src="~/Images/@item.AnhMinhHoa" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SLXem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SLBan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.THELOAI.TenTheLoai)
+        </td>
+        <td class="col-3">
+            @Html.ActionLink("Chỉnh sửa", "Edit", new { id=item.IDSach }, new { @class = "btn btn-outline-warning" }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.IDSach }, new { @class = "btn btn-outline-info" }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.IDSach }, new { @class = "btn btn-outline-danger" })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,130 @@
+﻿@model MiniBook.Models.DONHANG
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">Chi tiết đơn hàng </h2>
+<hr />
+<div>
+
+    <div class="dl-horizontal">
+        <div class="row">
+            <div class="col-md-3 row-title">
+                ID đơn hàng:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.IDDonHang)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Ngày đặt:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.NgayDat)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Ngày giao:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.NgayGiao)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Tổng tiền:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.TongTien)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Tên người nhận:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.TenNguoiNhan)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Địa chỉ nhận:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.DiaChiNhan)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Số điện thoại nhận:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.SDTNhan)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Hình thức giao hàng:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.HTGiaoHang)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Hình thức thanh toán:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.HTThanhToan)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Ngày gửi hàng:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.NgayGuiHang)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Tình trạng đơn hàng:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.TrangThai)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Tên tài khoản đặt hàng:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.KHACHHANG.Ten)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 row-title">
+                Voucher đã dùng:
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.VOUCHER1.Ma)
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<p style="text-align:center; padding-top: 20px">
+    @Html.ActionLink("Cập nhật trạng thái", "Edit", new { id = Model.IDKhachHang }, new { @class = "btn btn-outline-warning" }) |
+    @Html.ActionLink("Chi tiết sản phẩm", "ChiTietDonHang", new { id = Model.IDDonHang }, new { @class = "btn btn-outline-info" }) |
+    @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-outline-secondary" })
+</p>

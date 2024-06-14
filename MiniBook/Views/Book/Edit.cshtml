@@ -1,0 +1,108 @@
+﻿@model MiniBook.Models.SACH
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2 style="text-align:center">Chỉnh sửa thông tin sách sách </h2>
+
+<hr />
+
+@using (Html.BeginForm("Edit", "Book", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IDSach)
+
+        <div class="form-group">
+            Tên sách
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenSach, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenSach, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Giá bán
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GiaBan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Số lượng kho
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SoLuongKho, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SoLuongKho, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Mô tả
+            <div class="col-md-10"> 
+                @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Ảnh minh họa
+            <div class="col-md-10">
+                <img style="width:150px; height:150px" src="~/Images/@Model.AnhMinhHoa" />
+                <input type="file" name="AnhMinhHoa" />
+                @Html.ValidationMessageFor(model => model.AnhMinhHoa, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Ngày phát hành
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NgayPhatHanh, new { htmlAttributes = new { @class = "form-control" ,@type = "date" } })
+                @Html.ValidationMessageFor(model => model.NgayPhatHanh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Số lượt xem
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SLXem, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SLXem, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Số lượng bán
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SLBan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SLBan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Nhà xuất bản
+            <div class="col-md-10">
+                @Html.DropDownList("IDNXB", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDNXB, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+           Thể loại
+            <div class="col-md-10">
+                @Html.DropDownList("IDTheLoai", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDTheLoai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-actions no-color"style="text-align:center; padding-top: 20px">
+                <input type="submit" value="Lưu" class="btn btn-success" /> |
+                @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-outline-secondary" })
+        </div>
+    </div>
+}
+
+
