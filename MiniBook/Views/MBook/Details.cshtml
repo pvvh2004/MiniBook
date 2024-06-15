@@ -11,15 +11,15 @@
             <div class="col-md-8">
 
                 <h1 class="display-6 fw-bolder">@Model.TenSach</h1>
-                <div class="fs-5 mb-5">
+                <div class="fs-5">
                     @*<span class="text-decoration-line-through">$45.00</span> Giá gốc gạch*@
-                    @string.Format("{0:#,##0}", Model.GiaBan) vnd
+                    <span>Giá: @string.Format("{0:#,##0}", Model.GiaBan) VND</span>
                 </div>
-              @*  <div class="small mb-1">Số lượt xem: @Model.SLXem</div>
-                <div class="small mb-1">Số lượng kho: @Model.SoLuongKho - Đã bán: @Model.SLBan</div>*@
+              @*  <div class="small mb-1">Số lượt xem: @Model.SLXem</div>*@
+                <div class="small mb-1">Số lượng kho: @Model.SoLuongKho - Đã bán: @Model.SLBan</div>
                 <div style="margin-top:20px" class=" flex-shrink-0">
                     <i class="bi-cart-fill me-1"></i>
-                    <a class="btn btn-primary" href="#!">Đặt mua</a>
+                    <a class="btn btn-primary" href="@Url.Action("ThemSanPhamVaoGio", "GioHang", new { IDSach = Model.IDSach })">Đặt mua</a>
 
                 </div>
             </div>
@@ -27,4 +27,3 @@
         </div>
     </div>
 </section>
-@*@Url.Action("ThemSanPhamVaoGio", "GioHang", new { IDSach = Model.IDSach })*@

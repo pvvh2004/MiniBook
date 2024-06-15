@@ -142,9 +142,9 @@ namespace MiniBook.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Register([Bind(Include = "IDKhachHang,Ten,DiaChi,SDT,Mail,TenDangNhap,MatKhau,NgaySinh,GioiTinh,XacThuc")]  KHACHHANG cus)
+        public ActionResult Register([Bind(Include = "IDKhachHang,Ten,DiaChi,SDT,Mail,TenDangNhap,MatKhau,NgaySinh,GioiTinh,XacThuc")] KHACHHANG cus)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 if (string.IsNullOrEmpty(cus.Ten))
                     ModelState.AddModelError(String.Empty, "Không được để trống");
@@ -156,7 +156,7 @@ namespace MiniBook.Controllers
                     ModelState.AddModelError(String.Empty, "Không được để trống");
                 if (string.IsNullOrEmpty(cus.SDT))
                     ModelState.AddModelError(String.Empty, "Không được để trống");
-                if (string.IsNullOrEmpty(cus.DiaChi ))
+                if (string.IsNullOrEmpty(cus.DiaChi))
                     ModelState.AddModelError(String.Empty, "Không được để trống");
 
                 var cusdb = db.KHACHHANGs.FirstOrDefault(c => c.TenDangNhap == cus.TenDangNhap);
@@ -192,10 +192,10 @@ namespace MiniBook.Controllers
                 //Kiểm tra có admin này hay chưa
                 var cusdb = db.KHACHHANGs.FirstOrDefault(c => c.TenDangNhap == cus.TenDangNhap && c.MatKhau == cus.MatKhau);
                 if (cusdb == null)
-                     ViewBag.ThongBao="Tên đăng nhập hoặc mật khẩu không đúng";
+                    ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng";
                 else
                 {
-                    Session["IDCus"]=cusdb.IDKhachHang;
+                    Session["IDCus"] = cusdb.IDKhachHang;
                     Session["CusName"] = cusdb.Ten;
                     Session["TaiKhoan"] = cusdb;
                     ViewBag.ThongBao = "Đăng nhập admin thành công";
@@ -209,16 +209,16 @@ namespace MiniBook.Controllers
             Session.Abandon();
             return RedirectToAction("Login");
         }
-        // GET: Customer/RequestResetPassword
+        // GET: Customer/ResetPassword
         [HttpGet]
-        public ActionResult RequestResetPassword()
+        public ActionResult ResetPassword()
         {
             return View();
         }
 
-        // POST: Customer/RequestResetPassword
+        // POST: Customer/ResetPassword
         [HttpPost]
-        public ActionResult RequestResetPassword(string email)
+        public ActionResult ResetPassword(string email, string newPassword, string confirmPassword)
         {
             if (string.IsNullOrEmpty(email))
             {
@@ -229,34 +229,8 @@ namespace MiniBook.Controllers
             var customer = db.KHACHHANGs.FirstOrDefault(c => c.Mail == email);
             if (customer == null)
             {
-                ModelState.AddModelError("", "Email không tồn tại.");
+                ModelState.AddModelError("", "Email không tồn tại trên hệ thống. Vui lòng nhập lại");
                 return View();
-            }
-
-            // Lưu email vào Session để sử dụng trong ChangePassword
-            Session["ResetEmail"] = email;
-            return RedirectToAction("ChangePassword");
-        }
-
-        // GET: Customer/ChangePassword
-        [HttpGet]
-        public ActionResult ChangePassword()
-        {
-            if (Session["ResetEmail"] == null)
-            {
-                return RedirectToAction("RequestResetPassword");
-            }
-
-            return View();
-        }
-
-        // POST: Customer/ChangePassword
-        [HttpPost]
-        public ActionResult ChangePassword(string newPassword, string confirmPassword)
-        {
-            if (Session["ResetEmail"] == null)
-            {
-                return RedirectToAction("RequestResetPassword");
             }
 
             if (string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(confirmPassword))
@@ -271,21 +245,10 @@ namespace MiniBook.Controllers
                 return View();
             }
 
-            var email = Session["ResetEmail"].ToString();
-            var customer = db.KHACHHANGs.FirstOrDefault(c => c.Mail == email);
-            if (customer == null)
-            {
-                ModelState.AddModelError("", "Lỗi xảy ra, vui lòng thử lại.");
-                return View();
-            }
-
             customer.MatKhau = newPassword;
             db.Entry(customer).State = EntityState.Modified;
             db.SaveChanges();
 
-            Session["ResetEmail"] = null;
-
-            // Chuyển hướng về trang đăng nhập sau khi đổi mật khẩu thành công
             TempData["Message"] = "Mật khẩu của bạn đã được thay đổi thành công. Vui lòng đăng nhập lại.";
             return RedirectToAction("Login");
         }

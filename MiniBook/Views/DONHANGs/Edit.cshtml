@@ -13,119 +13,107 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.IDDonHang)
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.IDDonHang)
 
-        <div class="form-group">
-           Ngày đặt
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NgayDat, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NgayDat, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            Tổng tiền
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TongTien, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TongTien, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            Ngày giao
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NgayGiao, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NgayGiao, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            Địa chỉ nhận
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DiaChiNhan, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DiaChiNhan, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            Số điện thoại nhận
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SDTNhan, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SDTNhan, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            Tên người nhận
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TenNguoiNhan, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TenNguoiNhan, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            Ngày gửi hàng 
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NgayGuiHang, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NgayGuiHang, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            Hình thức giao hàng
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HTGiaoHang, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HTGiaoHang, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            Hình thức thanh toán
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HTThanhToan, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HTThanhToan, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-           Trạng thái đơn hàng
-            <div class="col-md-10">
-                <select name="TrangThai" >
-                    <option name="TrangThai" value="@Model.TrangThai">@Model.TrangThai</option>
-                    @if (Model.TrangThai == "Chờ xác nhận")
-                    {
-                        <option name="TrangThai" value="Đã xác nhận - Đang chuẩn bị hàng">Đã xác nhận - Đang chuẩn bị hàng</option>
-                        <option name="TrangThai" value="Đã gửi hàng">Đã gửi hàng</option>
-                        <option name="TrangThai" value="Đã hủy">Đã hủy</option>
-                    }
-                    else if (Model.TrangThai == "Đã xác nhận - Đang chuẩn bị hàng")
-                    {
-                        <option name="TrangThai" value="Đã gửi hàng">Đã gửi hàng</option>
-                        <option name="TrangThai" value="Đã hủy">Đã hủy</option>
-                    }
-                    else if (Model.TrangThai == "Đã gửi hàng")
-                    {
-                        <option name="TrangThai" value="Đã hoàn thành">Đã hoàn thành</option>
-                        <option name="TrangThai" value="Đã hủy">Đã hủy</option>
-                    }
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group">
-            Khách hàng
-            <div class="col-md-10">
-                @Html.DropDownList("IDKhachHang", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.IDKhachHang, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-        <div class="form-actions no-color" style="text-align:center; padding-top: 20px">
-            <input type="submit" value="Lưu" class="btn btn-success" /> |
-            @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-outline-secondary" })
+    <div class="form-group">
+        Ngày đặt
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.NgayDat, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NgayDat, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        Tổng tiền
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TongTien, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TongTien, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Ngày giao
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.NgayGiao, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NgayGiao, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Địa chỉ nhận
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DiaChiNhan, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DiaChiNhan, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Số điện thoại nhận
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SDTNhan, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SDTNhan, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Tên người nhận
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TenNguoiNhan, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TenNguoiNhan, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Ngày gửi hàng
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.NgayGuiHang, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NgayGuiHang, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Hình thức giao hàng
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.HTGiaoHang, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.HTGiaoHang, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Hình thức thanh toán
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.HTThanhToan, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.HTThanhToan, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Trạng thái đơn hàng
+        <div class="col-md-10">
+            <select name="TrangThai" class="form-control">
+                <option value="Chờ xác nhận" @(Model.TrangThai == "Chờ xác nhận" ? "selected" : "")>Chờ xác nhận</option>
+                <option value="Đã xác nhận - Đang chuẩn bị hàng" @(Model.TrangThai == "Đã xác nhận - Đang chuẩn bị hàng" ? "selected" : "")>Đã xác nhận - Đang chuẩn bị hàng</option>
+                <option value="Đã gửi hàng" @(Model.TrangThai == "Đã gửi hàng" ? "selected" : "")>Đã gửi hàng</option>
+                <option value="Đã hoàn thành" @(Model.TrangThai == "Đã hoàn thành" ? "selected" : "")>Đã hoàn thành</option>
+                <option value="Đã hủy" @(Model.TrangThai == "Đã hủy" ? "selected" : "")>Đã hủy</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        Khách hàng
+        <div class="col-md-10">
+            @Html.DropDownList("IDKhachHang", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.IDKhachHang, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-actions no-color" style="text-align:center; padding-top: 20px">
+        <input type="submit" value="Lưu" class="btn btn-success" /> |
+        @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-outline-secondary" })
+    </div>
+</div>
 }

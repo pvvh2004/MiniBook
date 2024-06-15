@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
 
-@*<div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
+<div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -38,7 +38,7 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
-</div>*@
+</div>
 <div class="h4 pb-2 mb-4  border-bottom border-danger">
     <a style="color: orangered; text-decoration: none" href="@Url.Action("AllBook", "MBook")">Toàn bộ sách</a>
 </div>
@@ -57,11 +57,10 @@
                 <div class="card-body" style="text-align: center">
                     <div style="height:70px"><h6 class="card-title text">@book.TenSach</h6></div>
                     <p class="card-text">@string.Format("{0:#,##0}", book.GiaBan) vnd</p>
-                    <a class="btn btn-outline-warning" href="#!">Thêm vào giỏ hàng</a>
+                    <a class="btn btn-outline-warning" href="@Url.Action("ThemSanPhamVaoGio","GioHang", new {IDSach=book.IDSach})">Thêm vào giỏ hàng</a>
                 </div>
             </div>
         </div>
     }
 </div>
 
-@*@Url.Action("ThemSanPhamVaoGio","GioHang", new {IDSach=book.IDSach})*@
