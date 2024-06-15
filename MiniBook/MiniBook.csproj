@@ -224,7 +224,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\anh1.jpg" />
-    <Content Include="Images\Logo.png" />
+    <Content Include="Images\anh10.gif" />
+    <Content Include="Images\anh9.gif" />
+    <Content Include="Images\logo.png" />
     <Content Include="Images\logoCart.png" />
     <Content Include="Images\slide1.jpg" />
     <Content Include="Images\slide2.png" />
@@ -345,8 +347,7 @@
     <Content Include="Views\DONHANGs\LichSuDonHang.cshtml" />
     <Content Include="Views\Admin\ThongKe.cshtml" />
     <Content Include="Views\DONHANGs\DanhSachSanPham.cshtml" />
-    <Content Include="Views\Customer\RequestResetPassword.cshtml" />
-    <Content Include="Views\Customer\ChangePassword.cshtml" />
+    <Content Include="Views\Customer\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

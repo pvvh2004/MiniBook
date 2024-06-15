@@ -119,7 +119,6 @@ namespace MiniBook.Controllers
                 var path = Path.Combine(Server.MapPath("~/Images"), fileName);
                 sACH.AnhMinhHoa = fileName;
                 AnhMinhHoa.SaveAs(path);
-
                 sachDB.TenSach = sACH.TenSach;
                 sachDB.GiaBan = sACH.GiaBan;
                 sachDB.SoLuongKho = sACH.SoLuongKho;
