@@ -295,7 +295,7 @@ namespace MiniBook.Controllers
             {
                 db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("ThongTinTaiKhoan", new { id = customer.IDKhachHang });
+                return RedirectToAction("Information", new { id = customer.IDKhachHang });
             }
             return View(customer);
         }
