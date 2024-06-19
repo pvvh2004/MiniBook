@@ -348,6 +348,8 @@
     <Content Include="Views\Admin\ThongKe.cshtml" />
     <Content Include="Views\DONHANGs\DanhSachSanPham.cshtml" />
     <Content Include="Views\Customer\ResetPassword.cshtml" />
+    <Content Include="Views\Customer\Information.cshtml" />
+    <Content Include="Views\Customer\EditAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -50,8 +50,6 @@ namespace MiniBook.Controllers
         }
 
         // POST: Customer/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IDKhachHang,Ten,DiaChi,SDT,Mail,TenDangNhap,MatKhau,NgaySinh,GioiTinh,XacThuc")] KHACHHANG kHACHHANG)
@@ -84,8 +82,6 @@ namespace MiniBook.Controllers
         }
 
         // POST: Customer/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IDKhachHang,Ten,DiaChi,SDT,Mail,TenDangNhap,MatKhau,NgaySinh,GioiTinh,XacThuc")] KHACHHANG kHACHHANG)
@@ -141,6 +137,7 @@ namespace MiniBook.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Register([Bind(Include = "IDKhachHang,Ten,DiaChi,SDT,Mail,TenDangNhap,MatKhau,NgaySinh,GioiTinh,XacThuc")] KHACHHANG cus)
         {
@@ -189,7 +186,6 @@ namespace MiniBook.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Kiểm tra có admin này hay chưa
                 var cusdb = db.KHACHHANGs.FirstOrDefault(c => c.TenDangNhap == cus.TenDangNhap && c.MatKhau == cus.MatKhau);
                 if (cusdb == null)
                     ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng";
@@ -198,17 +194,19 @@ namespace MiniBook.Controllers
                     Session["IDCus"] = cusdb.IDKhachHang;
                     Session["CusName"] = cusdb.Ten;
                     Session["TaiKhoan"] = cusdb;
-                    ViewBag.ThongBao = "Đăng nhập admin thành công";
+                    ViewBag.ThongBao = "Đăng nhập thành công";
                     return RedirectToAction("Index", "MBook");
                 }
             }
             return View();
         }
+
         public ActionResult Logout()
         {
             Session.Abandon();
             return RedirectToAction("Login");
         }
+
         // GET: Customer/ResetPassword
         [HttpGet]
         public ActionResult ResetPassword()
@@ -251,6 +249,55 @@ namespace MiniBook.Controllers
 
             TempData["Message"] = "Mật khẩu của bạn đã được thay đổi thành công. Vui lòng đăng nhập lại.";
             return RedirectToAction("Login");
+        }
+
+        // GET: Customer/ThongTinTaiKhoan
+        public ActionResult Information(int id)
+        {
+            if (Session["IDCus"] == null || (int)Session["IDCus"] != id)
+            {
+                return RedirectToAction("Login", "Customer");
+            }
+
+            var customer = db.KHACHHANGs.Find(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(customer);
+        }
+
+        // GET: Customer/EditAccount
+        [HttpGet]
+        public ActionResult EditAccount(int id)
+        {
+            if (Session["IDCus"] == null || (int)Session["IDCus"] != id)
+            {
+                return RedirectToAction("Login", "Customer");
+            }
+
+            var customer = db.KHACHHANGs.Find(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(customer);
+        }
+
+        // POST: Customer/EditAccount
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditAccount([Bind(Include = "IDKhachHang,Ten,DiaChi,SDT,Mail,TenDangNhap,MatKhau,NgaySinh,GioiTinh,XacThuc")] KHACHHANG customer)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(customer).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("ThongTinTaiKhoan", new { id = customer.IDKhachHang });
+            }
+            return View(customer);
         }
     }
 }

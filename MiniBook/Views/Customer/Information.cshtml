@@ -1,0 +1,49 @@
+﻿@model MiniBook.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Thông tin tài khoản";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center">Thông tin tài khoản</h2>
+            <div class="form-horizontal">
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label text-md-right justify-content-end">Tên</label>
+                    <div class="col-md-8">
+                        <p class="form-control-plaintext">@Model.Ten</p>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label text-md-right">Email</label>
+                    <div class="col-md-8">
+                        <p class="form-control-plaintext">@Model.Mail</p>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label text-md-right">Địa chỉ</label>
+                    <div class="col-md-8">
+                        <p class="form-control-plaintext">@Model.DiaChi</p>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label text-md-right">Số điện thoại</label>
+                    <div class="col-md-8">
+                        <p class="form-control-plaintext">@Model.SDT</p>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-8 offset-md-4">
+                        <a href="@Url.Action("EditAccount", new { id = Model.IDKhachHang })" class="btn btn-primary">Chỉnh sửa thông tin</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
